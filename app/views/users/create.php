@@ -8,9 +8,9 @@
   <style>
     /* Background animation */
     body {
-      background: linear-gradient(120deg, #3498db, #8e44ad);
+      background: radial-gradient(circle at top left, #1a2a6c, #b21f1f, #fdbb2d);
       background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
+      animation: gradientShift 12s ease infinite;
     }
 
     @keyframes gradientShift {
@@ -19,86 +19,50 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Card shadow and glow */
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(15px);
-    }
-
-    /* Focus and input transition */
-    input:focus, button:focus {
-      outline: none;
-      box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
-    }
-
-    .button-primary {
-      background-color: #3498db;
-      color: white;
-      border-radius: 50px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .button-primary:hover {
-      background-color: #2980b9;
-    }
-
-    .button-secondary {
-      background-color: #555;
-      color: white;
-      border-radius: 50px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .button-secondary:hover {
-      background-color: #444;
+    /* Floating glow effect */
+    .glow {
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 30px rgba(56, 189, 248, 0.4);
     }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
 
-  <!-- Card Container -->
-  <div class="relative z-10 w-full max-w-lg p-10 rounded-xl card">
+  <!-- Card -->
+  <div class="relative z-10 w-full max-w-md backdrop-blur-xl bg-white/20 p-8 rounded-3xl border border-white/30 glow">
     
     <!-- Title -->
     <h1 class="text-4xl font-extrabold text-center mb-8 text-white tracking-wide drop-shadow-lg">
-      Create User
+       Create User
     </h1>
 
     <!-- Form -->
     <form action="<?= site_url('users/create'); ?>" method="POST" class="space-y-6">
       
       <!-- Last Name -->
-      <div>
-        <label for="lastname" class="block text-white font-semibold mb-2">Last Name</label>
-        <input 
-          type="text" 
-          id="lastname" 
-          name="lastname" 
-          placeholder="Enter last name"
-          required
-          class="w-full px-6 py-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition"
-        >
-      </div>
+<div>
+  <label for="lastname" class="block text-white font-semibold mb-2">Last Name</label>
+  <input 
+    type="text" 
+    id="lastname" 
+    name="lastname" 
+    placeholder="Enter last name"
+    required
+    class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  >
+</div>
 
-      <!-- First Name -->
-      <div>
-        <label for="firstname" class="block text-white font-semibold mb-2">First Name</label>
-        <input 
-          type="text" 
-          id="firstname" 
-          name="firstname" 
-          placeholder="Enter first name"
-          required
-          class="w-full px-6 py-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition"
-        >
-      </div>
+<!-- First Name -->
+<div>
+  <label for="firstname" class="block text-white font-semibold mb-2">First Name</label>
+  <input 
+    type="text" 
+    id="firstname" 
+    name="firstname" 
+    placeholder="Enter first name"
+    required
+    class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  >
+</div>
 
       <!-- Email -->
       <div>
@@ -109,20 +73,21 @@
           name="email" 
           placeholder="Enter email"
           required
-          class="w-full px-6 py-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition"
+          class="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-400"
         >
       </div>
 
       <!-- Buttons -->
-      <div class="flex gap-4 pt-4">
-        <!-- Submit Button -->
-        <button type="submit" class="button-primary flex-1">
-          Submit
+      <div class="flex gap-4 pt-2">
+        <!-- Sign Up -->
+        <button type="submit"
+          class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:scale-105">
+           Submit
         </button>
 
-        <!-- Cancel Button -->
-        <a href="<?= site_url('/'); ?>" class="button-secondary flex-1 text-center">
-          Cancel
+        <a href="<?= site_url('/'); ?>" 
+           class="flex-1 text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:scale-105">
+           Cancel
         </a>
       </div>
     </form>
